@@ -3,24 +3,31 @@ import './TodoList.css';
 import TodoItems from "./TodoItems";
 
 class TodoList extends Component {
-    constructor() {
-        super()
-        this.state = {items: []};
+    constructor(props, context) {
+        super(props, context)
+        this.state = {
+            items: []
+        };
+        this.addItem = this.addItem.bind(this);
     }
     addItem(e) {
         var itemArray = this.state.items;
-        itemArray.push(
-                {
-                    text: this._inputElement.value,
-                    key: Date.now()
-                }
-            );
 
-        this.setState({
-            items: itemArray
-        });
+        if (this._inputElement.value !== "") {
 
-        this._inputElement.value = "";
+            itemArray.unshift({
+                text: this._inputElement.value,
+                key: Date.now()
+            });
+
+            this.setState({
+                items: itemArray
+            });
+
+            this._inputElement.value = "";
+        }
+
+        console.log(itemArray);
 
         e.preventDefault();
     }

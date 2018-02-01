@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import './TodoItems.css';
 
 class TodoItems extends Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.createTasks = this.createTasks.bind(this);
+    }
+    createTasks(item) {
+        return <li key={item.key}>{item.text}</li>
+    }
     render() {
         var todoEntries = this.props.entries;
-        function createTasks(item) {
-            return (
-                <li key={item.key}>{item.text}</li>
-            );
-        }
-
-        var listItems = todoEntries.map(createTasks);
+        var listItems = todoEntries.map(this.createTasks);
         return (
             <ul className="theList">
                 {listItems}
