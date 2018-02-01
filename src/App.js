@@ -9,10 +9,10 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">This is a simple memo tool.</h1>
         </header>
         <div className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+            <span>You can input your task, and click the 'Add' Button.</span>
             <TodoList/>
         </div>
       </div>
